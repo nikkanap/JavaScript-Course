@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coin Toss</title>
+    </head>
+    <body>
+        <p>Coin Toss Program</p>
+        <button onclick="
+            const guess = 'Heads';
+            let randomNumber = Math.random();
+            console.log(randomNumber);
+            const result = (randomNumber > 0.5) ? 'Heads' : 'Tails';
+
+            const message = (result === guess) ? 'You win!' : 'You lose!';
+            alert(message);
+        ">Toss coin!</button>
+    </body>
+</html>

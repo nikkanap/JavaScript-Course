@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercise 6</title>
+    </head>
+    <body>
+        <script>
+            // 6a - 6c
+            let hour = 14;
+            let message = '';
+            const name = 'Nikka';
+            if(hour >= 6 && hour <= 12) {
+                message = `Good morning ${name}!`;
+            } else if (hour >= 13 && hour <= 17) {
+                message = `Good afternoon ${name}!`;
+            } else {
+                message = `Good evening ${name}!`;
+            }
+            console.log(message);
+
+            // 6d
+            const age = 2;
+            const isHoliday = true;
+            let message2 = '';
+            if((age >= 60 || age <= 5) && isHoliday) {
+                message2 = 'Discount';
+            } else {
+                message2 = 'No discount';
+            }
+            console.log(message2);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Booleans</title>
+    </head>
+    <body>
+        <script>
+            console.log(3 > 5);
+
+            if(false){
+                console.log('hello');
+            } else {
+                console.log('hello again lol');
+            }
+
+            const age = 30;
+            if(age >= 16) {
+                console.log("You're legally allowed to drive.\nCongrats!");
+            } else if (age >= 14) {
+                console.log('Almost there!');
+            } else {
+                console.log("You're not allowed to drive yet.");
+            }
+
+            const cartQuantity = 5;
+            if(cartQuantity) {
+                console.log('cart has products.');
+            } else {
+                console.log('cart has no products.');
+            }
+
+            console.log('text' / 5);
+
+            let variable1;
+            console.log(variable1);
+            console.log(true ? 'truthy' : 'falsy');
+            console.log(true && cartQuantity);
+            
+            const currency = undefined || 'USD';
+            console.log(currency);
+        </script>
+    </body>
+</html>
