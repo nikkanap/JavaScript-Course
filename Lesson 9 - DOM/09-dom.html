@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM</title>
+    </head>
+    <body>
+        <button>hello</button>
+        <button class="js-button">Second button</button>
+        <script>
+            /*
+            console.log(document.title);
+            document.title = 'Changed';
+
+            console.log(document.body);
+            console.log(typeof document.body); //object
+
+            console.log(document.body.innerHTML); // prints all the html stuff
+            document.body.innerHTML = 'changed';
+            console.log(document.body.innerHTML); // 'changed'
+
+            document.body.innerHTML = '<button>Good job!</button>';
+            */
+
+            //methods
+            //gives us any element from the page and put it inside javascript
+            console.log(document.querySelector('button'));
+            console.log(document.querySelector('button').innerHTML);
+            document.querySelector('button').innerHTML = 'changed';
+            
+            console.log(document.querySelector('.js-button'));
+            const buttonElement = document.querySelector('.js-button');
+            console.log(buttonElement); //same result as earlier console.log
+            
+            /*
+            document.body.innerHTML = 'hello';
+            document.title = 'Good job!';
+            */
+
+        </script>
+    </body>
+</html>

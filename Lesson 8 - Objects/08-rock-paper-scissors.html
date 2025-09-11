@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock, Paper, Scissors</title>
+    </head>
+    <body>
+        <p>Rock Paper Scissors</p>
+        <button onclick="playGame('rock', 'paper', 'scissors');">Rock</button>
+        <button onclick="playGame('paper', 'scissors', 'rock');">Paper</button>
+        <button onclick="playGame('scissors', 'rock', 'paper');">Scissors</button>
+        <button onclick="resetScore()">Reset Score</button>
+
+        <script>
+            //bro that's krazy
+            let score = JSON.parse(localStorage.getItem('score')) 
+            ||  {
+                    wins: 0,
+                    losses: 0,
+                    ties: 0
+                }
+
+            function playGame(playerMove, loseMove, winMove) {
+                const computerMove = pickComputerMove();
+                const result = getResult(playerMove, computerMove, loseMove, winMove);
+                const scoreString = JSON.stringify(score);
+                localStorage.setItem('score', scoreString);
+
+                printResult(playerMove, computerMove, result);
+            }
+            
+            function getResult(playerMove, computerMove, loseMove, winMove) {
+                if(computerMove === playerMove){
+                    score.ties += 1;
+                    return 'Tie.';
+                } else if (computerMove === loseMove){
+                    score.losses += 1;
+                    return 'You lose.';
+                } else if (computerMove === winMove){
+                    score.wins += 1;
+                    return 'You win.';
+                }
+            }
+
+            function pickComputerMove() {
+                const randomNumber = Math.random();
+                if(randomNumber >= 0 && randomNumber < 1/3){
+                    return 'rock';
+                } else if (randomNumber >= 1/3 && randomNumber < 2/3){
+                    return 'paper';
+                } else if (randomNumber >= 2/3 && randomNumber < 1){
+                    return 'scissors';
+                }
+            }
+
+            function resetScore(){
+                // clear the game in the java memory
+                score.wins = 0;
+                score.losses = 0;
+                score.ties = 0;
+
+                //then clear it from the localStorage
+                localStorage.removeItem('score');
+            }
+
+            function printResult(playerMove, computerMove, result) {
+                const message = `You picked ${playerMove}. Computer picked ${computerMove}. ${result}` 
+                + `\nWins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+                alert(message);
+            }
+        </script>
+    </body>
+</html>

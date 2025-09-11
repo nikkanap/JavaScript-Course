@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Functions</title>
+    </head>
+    <body>
+        <button onclick="function1();">button</button>
+        <script>
+            /*
+            function function1() {
+                console.log('hello world');
+                console.log(2 + 2);
+            }
+
+            // this runs the code
+            function1();
+            */
+
+            function calculateTax(cost, taxPercent=0.1) {
+                //uses default value
+                console.log(cost * taxPercent);
+            }
+
+            calculateTax(2000, 0.12);
+            calculateTax(5000);  
+        </script>
+    </body>
+</html>

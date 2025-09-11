@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+    </head>
+    <body>
+        <p>Calculator</p>
+        <p class="calculator-display"></p>
+        <button onclick="updateCalculation(1);">1</button>
+        <button onclick="updateCalculation(2);">2</button>
+        <button onclick="updateCalculation(3);">3</button>
+        <button onclick="updateCalculation('+');">+</button>
+        <button onclick="calculate()">=</button>
+        <script>
+            let calculation = localStorage.getItem('calculation') || '';
+            let calculatorDisplay = document.querySelector('.calculator-display');
+
+            function updateCalculation(value){
+                calculation += value;
+                calculatorDisplay.innerHTML = calculation;
+                localStorage.setItem('calculation', calculation);
+            }
+
+            function calculate() {
+                calculation = eval(calculation); 
+                calculatorDisplay.innerHTML = calculation;
+                calculation = calculation.toString();
+                localStorage.setItem('calculation', calculation);
+            }
+        </script>
+    </body>
+
+</html>

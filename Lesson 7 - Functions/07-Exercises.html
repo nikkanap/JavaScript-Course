@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercises</title>
+    </head>
+    <body>
+        <script>
+            // greeting function
+            function greet(name) {
+                if(!name){
+                    console.log('Hello there!');
+                } else {
+                    console.log(`Hello ${name}!`);
+                }
+            }
+
+            // temperature conversion functions
+            function convertToFahrenheit(celsius) {
+                const toFahrenheit = (celsius * (9/5)) + 32;
+                return toFahrenheit + "F";
+            }
+
+            function convertToCelsius(fahrenheit) {
+                const toCelsius = (fahrenheit - 32) * (5/9);
+                return toCelsius + "C";
+            }
+
+            function convertTemperature(degrees, unit) {
+                if(unit === 'C') return convertToFahrenheit(degrees);
+                return convertToCelsius(degrees);
+            }
+
+            //length conversion functions
+            function convertLength(length, from, to) {
+                const invalidFromUnit = !(from === 'km' || from === 'miles' || from === 'ft');
+                const invalidToUnit = !(to === 'km' || to === 'miles' || to === 'ft');
+                if(invalidFromUnit)
+                    return `Invalid unit: ${from}`;
+                else if(invalidToUnit)
+                    return `Invalid unit: ${to}`;
+
+                if(to === 'km') return toKilometers(length, from) + " km";
+                else if(to === 'miles') return toMiles(length, from) + " miles";
+                else if (to === 'ft') return toFeet(length, from) + " feet";
+            }
+
+            function toKilometers(length, from) {
+                if(from === 'km'){
+                    return length;
+                } 
+                if(from === 'miles'){
+                    return Math.round(length * 1.60934);
+                }
+                return Math.round(length * 0.0003048);
+            }
+
+            function toMiles(length, from) {
+                if(from === 'miles'){
+                    return length;
+                } 
+                if(from === 'km'){
+                    return Math.round(length * 0.621371);
+                }
+                return Math.round(length * 0.000189394);
+            }
+
+            function toFeet(length, from) {
+                if(from === 'feet'){
+                    return length;
+                } 
+                if(from === 'km'){
+                    return Math.round(length * 3280.84);
+                }
+                return Math.round(length * 5280.00016896);
+            }
+
+            greet();
+            greet('Simon');
+            console.log(convertTemperature(25, 'C'));
+            console.log(convertTemperature(86, 'F'));
+            console.log(convertLength(5, 'miles', 'km'));
+            console.log(convertLength(5, 'miles', 'ft'));
+            console.log(convertLength(5, 'km', 'ft'));
+            console.log(convertLength(5, 'lbs', 'lbs'));
+        </script>
+    </body>
+</html>

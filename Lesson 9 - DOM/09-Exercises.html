@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercises</title>
+    </head>
+    <body>
+        <button>9a</button>
+        <button class="nine-b">9b</button>
+        <br><br>
+
+        <button onclick="coin('heads')">heads</button>
+        <button onclick="coin('tails')">tails</button>
+        <p class="you-chose"></p>
+
+        <input placeholder="Enter your name" class="name" onkeydown="keydownEvents(event)">
+        <button onclick="nameSubmission()">Submit</button>
+        <p class="your-name"></p>
+
+        <input placeholder="Cost of order" class="js-cost-input" onkeydown="handleCostKeydown(event)">
+        <button onclick="calculateTotal();">Calculate</button>
+        <p class="js-total-cost"></p>
+
+        <input placeholder="Enter a string" class="string-input" onkeyup="stringPrinter()">
+        <p class="auto-string-printer"></p>
+        <script>
+            console.log(document.querySelector('button'));
+            document.querySelector('.nine-b').innerHTML = '9b done!';
+            
+            function coin(coinSide){
+                document.querySelector('.you-chose').innerHTML = `You chose: ${coinSide}`;
+            }
+
+            function nameSubmission(){
+                const name = document.querySelector('.name').value;
+                document.querySelector('.your-name').innerHTML = `Your name is: ${name}`;
+            }
+
+            function keydownEvents(event){
+                if(event.key === 'Enter'){
+                    nameSubmission();
+                }
+            }
+
+            function calculateTotal(){
+                const inputElement = document.querySelector('.js-cost-input');
+                let cost = Number(inputElement.value);
+
+                if(cost < 40){
+                    cost += 10;
+                } 
+                cost = cost.toFixed(2);
+                document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+            }
+
+            function handleCostKeydown(event){
+                if(event.key !== 'Enter')  
+                    return;
+                calculateTotal(); 
+            }
+
+            function stringPrinter() {
+                const inputElement = document.querySelector('.string-input').value;
+                document.querySelector('.auto-string-printer').innerHTML = inputElement;
+            }
+        </script>
+    </body>
+</html>

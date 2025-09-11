@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Objects</title>
+    </head>
+    <body>
+        <script>
+            /*
+            const product = {
+                name: 'socks', 
+                price: 1090
+            };
+
+            console.log(product);
+            console.log(product.name);
+            console.log(product.price);
+
+            product.name = 'cotton socks';
+            console.log(product);
+            
+            product.newProperty = true;
+            console.log(product);
+
+            delete product.newProperty;
+            console.log(product);
+            
+            const product2 = {
+                name: 'shirt',
+                'delivery-time': '1 day',
+                //could be ['delivery-time']
+                rating: {
+                    stars: 4.5,
+                    count: 87
+                },
+                fun: function function1(){
+                    console.log('function inside object');
+                }
+            };
+            console.log(product2);
+
+            //dot notation (default)
+            console.log(product2.name); 
+
+            //bracket notation
+            console.log(product2['name']); //allows us to do what product may be unable to do
+            console.log(product2['delivery-time']);
+
+            //nested object inside object
+            console.log(product2.rating);
+            console.log(product2.rating.count);
+
+            // function inside object
+            product2.fun();
+
+            console.log(typeof console);
+            console.log(typeof console.log);
+
+            // convert objects to JSON
+            let jsonString = JSON.stringify(product2); // results of a string
+            console.log(jsonString);
+            console.log(typeof jsonString);
+
+            // convert JSON to objects
+            let parsedFromJSON = JSON.parse(jsonString);
+            console.log(parsedFromJSON);
+            */
+
+            console.log('hello'.length);
+            console.log('hello'.charAt(1));
+            console.log('hello'.toUpperCase());
+            console.log(1.0.toString());
+
+            const object1 = {
+                message: 'hello'
+            }
+            const object2 = object1; //copies the REFERENCE of object1, not the objects
+
+            object1.message = 'Good job!';
+            console.log(object1); // we can still change the values inside objects despite the use of const
+            console.log(object2);
+
+            const object3 = {
+                message: "Good job!"
+            };
+            console.log(object3 === object1); //will result to false
+            console.log(object2 === object1); //will result to true because both objects1 and 2 point to the same reference
+        
+            const object4 = {
+                message: "Good job!",
+                price: 799
+            };
+            
+            //destructuring shortcut
+            //const message = object4.message;
+            const { message, price } = object4;
+            console.log(message);
+            console.log(price);
+
+            //shorthand property
+            const object5 = {
+                // message: message
+                message,
+
+                //shorthand method syntax
+                /*
+                method: function function1(){
+                    console.log('method');
+                }
+                */
+                method() {
+                    console.log('method')
+                }
+            };
+            console.log(object5);
+            object5.method();
+        </script>
+    </body>
+</html>
