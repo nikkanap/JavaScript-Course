@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercises</title>
+    </head>
+    <body>
+        <button class="start-button">Start</button>
+        <br><br>
+        <button class="add-to-cart-button">Add to cart</button>
+        <p class="display"></p>
+        <br><br>
+        <button class="add-button">Add</button>
+        <button class="remove-button">Remove</button>
+
+        <script>
+            let add = function () {
+                console.log(2 + 3);
+            };
+            add();
+            add();
+
+            const runTwice = fun => {
+                fun();
+                fun();
+            }
+            runTwice(add);
+
+            const buttonFunction = () => {
+                const button = document.querySelector('.start-button');
+                button.innerHTML = 'Loading...';
+                setTimeout(function (){
+                    button.innerHTML = 'Finished!';
+                }, 1000);
+            }
+
+            let intervalID = 0;
+
+            const addedToCart = () => {
+                clearInterval(intervalID);
+                const displayElement = document.querySelector('.display');
+                displayElement.innerHTML = '';
+
+                intervalID = setTimeout(function (){
+                    console.log('bruh');
+                    displayElement.innerHTML = 'Added';
+                }, 2000);
+            }
+
+            let intervalID2 = 0;
+            let count = 1;
+            let isChanged = false;
+            const changeTitle = () => {
+                intervalID2 = setInterval(function () {
+                    document.title = (isChanged) ? 'Exercises' : `(${count}) New Message`;
+                    isChanged = !isChanged;
+                }, 1000);
+            }
+            changeTitle();
+
+            const addToCart = document.querySelector('.add-to-cart-button');
+            addToCart.addEventListener('click', () => addedToCart());
+
+            const startButton = document.querySelector('.start-button');
+            startButton.addEventListener('click', () => buttonFunction());
+        
+            const addButton = document.querySelector('.add-button');
+            addButton.addEventListener('click', () => {
+                count++;
+                if(count === 1)
+                    changeTitle();
+            });
+
+            const removeButton = document.querySelector('.remove-button');
+            removeButton.addEventListener('click', () => {
+                count--;
+                if(count <= 0){
+                    clearInterval(intervalID2);
+                    document.title = 'Exercises';
+                } 
+            });
+        </script>
+    </body>
+</html>

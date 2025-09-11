@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo List</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Todo List Practice 1</p>
+        <input class="input1" placeholder="Todo name" onkeydown="keydownEvent(event, '.input1')">
+        <button onclick="toDoList1('.input1')">Add</button>
+
+        <p style="margin-top: 50px;">Todo List Practice 2</p>
+        <input class="input2" placeholder="Todo name" onkeydown="keydownEvent(event, '.input2')">
+        <button onclick="printToDo('.input2')">Add</button>
+        <div class="todo-list"></div>
+
+        <script src="scripts/11-todo-list.js"></script>
+    </body>
+</html>

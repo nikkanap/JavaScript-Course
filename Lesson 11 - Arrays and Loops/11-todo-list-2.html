@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo List</title>
+        <link rel="stylesheet" href="styles/11-todo-list-2.css">
+    </head>
+    <body>
+        <p>Todo List Practice 1</p>
+        <input class="input1" placeholder="Todo name" onkeydown="keydownEvent(event, '.input1')">
+        <button onclick="toDoList1('.input1')">Add</button>
+
+        <p style="margin-top: 50px;">Todo List Practice 2</p>
+        <input class="input2" placeholder="Todo name" onkeydown="keydownEvent(event, '.input2')">
+        <button onclick="printToDo1('.input2')">Add</button>
+        <div class="todo-list1"></div>
+
+        <p style="margin-top: 50px;">Todo List</p>
+        <div class="todo-input">
+            <input class="input3 name-input" placeholder="Todo name" onkeydown="keydownEvent(event, '.input3')">
+            <input class="date date-input" type="date"> 
+            <button class="add-todo-button" onclick="addToDo2('.input3')">Add</button>    
+        </div>
+        <div class="todo-list todo-grid"></div>
+
+        <script src="scripts/11-todo-list-2.js"></script>
+    </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Advanced Functions</title>
+    </head>
+    <body>
+        <button onclick="" class="js-button">Click</button>
+
+        <script>
+            //functions are values
+            // anything we can do with values we can do with functions
+            /*   
+            function greeting() {
+                console.log('hello');
+            }
+            greeting();
+
+            const num = 2;
+
+            //anonymous function
+            const function1 = function() {
+                console.log('hello2');
+            }
+
+            console.log(function1);
+            console.log(typeof function1);
+            function1();
+
+            const object1 = {
+                num: 2,
+                //method: function saved inside a method
+                fun: function() {
+                    console.log('hello3');
+                }
+            };
+            object1.fun();
+
+            function display(param) {
+                console.log(param);
+            }
+            display(2);
+
+            // passing a function into another function
+            function run(param) {
+                param();
+            }
+            run(function() { console.log('hello4'); });
+             
+            // asynchronous code (sets up the timer then goes to the next line)
+            setTimeout(function() { 
+                console.log('timeout'); 
+                console.log('timeout2')
+            }, 3000);
+
+            // synchronouse code: finishes the line before moving to the next line
+            console.log('next line');
+
+            // we give it a function and it will keep running that function on an interval
+            setInterval(function ()  {
+                console.log('interval');
+            }, 3000);
+            console.log('next line 2');
+            
+            
+            //forEach allows us to loop thru an array
+            [
+                'make dinner',
+                'wash dishes',
+                'watch youtube'
+            ].forEach((value, index) => {
+                if(value === 'wash dishes')
+                    return; //does the same as continue in a for loop
+                console.log(index);
+                console.log(value);
+            });
+            //there's no break in forEach so if u wanna use break, just use a for/while loop
+            
+            const regularFunction = (param, param2) => {
+                console.log('hello');
+                return 5;
+            }
+            regularFunction();
+
+            // arrow functions
+            const arrowFunction = (param, param2) => {
+               console.log('Hello'); 
+               return 5;
+            };
+            arrowFunction();
+
+            // one parameter arrow function
+            const oneParam = param => {
+                console.log(param + 1);
+            };
+            oneParam(2);
+
+            // one-line arrow function
+            const oneLine = () => 2 + 3;
+            console.log(oneLine());
+
+            const object2 = {
+                method: () => {
+
+                },
+                // method shorthand syntax, easier to read
+                method () {
+
+                }
+            };
+
+            const buttonElement = document.querySelector('.js-button');
+            //addEventListener has 2 params: event,
+            const eventListener = () => {
+                console.log('click');
+            }; 
+            buttonElement.addEventListener('click', eventListener); // does the same thing as onclick
+            
+            // we can also remove eventListeners
+            buttonElement.removeEventListener('click', eventListener)
+            
+            // but we can also add multiple eventListeners on the same event
+            buttonElement.addEventListener('click', () => {
+                console.log('click2');
+            }); 
+            //best practice is to use addEventListener than use onclick
+            */
+            
+            // filters the array
+            console.log([1, -3, 5].filter((value, index) => {
+                return value >= 0;
+            }));
+
+            // maps the array where each value is doubled or added
+            console.log([1, 1, 3].map((value, index) => {
+                return value*2;
+            }));
+
+            // shorter version of the code above
+            console.log([1, 1, 3].map(value => value*2));
+
+            
+        </script>
+    </body>
+</html>
