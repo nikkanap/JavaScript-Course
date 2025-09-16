@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercises</title>
+    </head>
+    <body>
+        <script type="module">
+            import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
+            import isSatSun from './isWeekend.js'
+            
+            //15a
+            const today = dayjs();
+            const fiveDaysFromNow = today.add(5, 'days');
+            let todayFormatted = fiveDaysFromNow.format('MMMM D');
+            console.log(todayFormatted);
+
+            //15b
+            const thirtyDaysFromNow = today.add(1, 'months');
+            todayFormatted = thirtyDaysFromNow.format('MMMM D');
+            console.log(todayFormatted);
+
+            //15c
+            const oneMonthBefore = today.subtract(1, 'months');
+            todayFormatted = oneMonthBefore.format('MMMM D');
+            console.log(todayFormatted);
+
+            //15d
+            const week = today.format('dddd');
+            console.log(week);
+
+            isSatSun(today);
+        </script>
+    </body>
+</html>
