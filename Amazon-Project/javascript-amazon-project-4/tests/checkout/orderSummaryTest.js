@@ -1,6 +1,5 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
-import { loadFromStorage } from "../../data/cart.js";
-import { cart } from "../../data/cart.js";
+import { cart } from "../../data/cart-class.js";
 import { getProduct } from "../../data/products.js";
 import { formatCurrency } from "../../scripts/utils/money.js"
 
@@ -20,30 +19,25 @@ describe('test suite: orderSummaryTest', () => {
     const deliveryOptionId = 3;
 
     beforeEach(() => {
-        spyOn(localStorage, 'setItem');
-
         document.querySelector('.js-test-container').innerHTML = `
             <div class="js-checkout-header"></div>
             <div class="js-order-summary"></div>
             <div class="js-payment-summary"></div>
         `;
-
-        spyOn(localStorage, 'getItem').and.callFake(() => {
-            return JSON.stringify([
-                {
-                    productId: productId1,
-                    quantity: 2,
-                    deliveryOptionId: '1'
-                },
-                {
-                    productId: productId2,
-                    quantity: 1,
-                    deliveryOptionId: '2'
-                }
-            ]);
-        });
-        loadFromStorage();
+        cart.cartItems = [
+            {
+                productId: productId1,
+                quantity: 2,
+                deliveryOptionId: '1'
+            },
+            {
+                productId: productId2,
+                quantity: 1,
+                deliveryOptionId: '2'
+            }
+        ];
         renderOrderSummary();
+
     }); // beforeEach hook -- renders this before each test
 
     it('displays the cart', () => {
@@ -92,11 +86,11 @@ describe('test suite: orderSummaryTest', () => {
         ).not.toEqual(null);
 
         expect(
-            cart.length
+            cart.cartItems.length
         ).toEqual(1);
 
         expect(
-            cart[0].productId
+            cart.cartItems[0].productId
         ).toEqual(productId2);
 
         expect(
@@ -115,11 +109,11 @@ describe('test suite: orderSummaryTest', () => {
         ).toEqual(true);
 
         expect(
-            cart.length
+            cart.cartItems.length
         ).toEqual(2);
 
         let matchingItem;
-        cart.forEach((item) => {
+        cart.cartItems.forEach((item) => {
             if(productId1 === item.productId){
                 matchingItem = item;
             } 
