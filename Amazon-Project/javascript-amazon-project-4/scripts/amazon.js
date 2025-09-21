@@ -9,6 +9,7 @@ import { formatCurrency } from './utils/money.js';
 //const cart = []
 updateCartQuantity();
 
+
 let productsHTML = '';
 products.forEach((product) => {
     productsHTML += `
@@ -48,6 +49,8 @@ products.forEach((product) => {
               <option value="10">10</option>
             </select>
           </div>
+
+          ${product.extraInfoHTML()}
 
           <div class="product-spacer"></div>
 
