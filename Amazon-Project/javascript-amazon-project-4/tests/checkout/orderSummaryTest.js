@@ -1,25 +1,35 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import { cart } from "../../data/cart-class.js";
-import { getProduct, loadProducts } from "../../data/products.js";
+import { getProduct, loadProductsFetch } from "../../data/products.js";
 import { formatCurrency } from "../../scripts/utils/money.js"
 
 describe('test suite: orderSummaryTest', () => {
     const productId1 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
     const productId2 = '15b6fc6f-327a-4ec4-896f-486349e85a3d';
-    
-    const product1 = getProduct(productId1);
-    const product2 = getProduct(productId2);
-    
-    const product1Name = product1.name;
-    const product2Name = product2.name;
 
-    const product1Price = formatCurrency(product1.priceCents);
-    const product2Price = formatCurrency(product2.priceCents);
+    let product1;
+    let product2;
+    
+    let product1Name;
+    let product2Name;
 
-    const deliveryOptionId = 3;
+    let product1Price;
+    let product2Price;
+
+    let deliveryOptionId;
 
     beforeAll((done) => {
-        loadProducts(() => { 
+        loadProductsFetch().then(() => {
+            product1 = getProduct(productId1);
+            product2 = getProduct(productId2);
+            
+            product1Name = product1.name;
+            product2Name = product2.name;
+
+            product1Price = formatCurrency(product1.priceCents);
+            product2Price = formatCurrency(product2.priceCents);
+
+            deliveryOptionId = 3;
             done();
         });
     });
