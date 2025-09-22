@@ -1,6 +1,6 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import { cart } from "../../data/cart-class.js";
-import { getProduct } from "../../data/products.js";
+import { getProduct, loadProducts } from "../../data/products.js";
 import { formatCurrency } from "../../scripts/utils/money.js"
 
 describe('test suite: orderSummaryTest', () => {
@@ -17,6 +17,13 @@ describe('test suite: orderSummaryTest', () => {
     const product2Price = formatCurrency(product2.priceCents);
 
     const deliveryOptionId = 3;
+
+    beforeAll((done) => {
+        loadProducts(() => {
+            
+        done();
+        });
+    });
 
     beforeEach(() => {
         document.querySelector('.js-test-container').innerHTML = `
@@ -37,7 +44,6 @@ describe('test suite: orderSummaryTest', () => {
             }
         ];
         renderOrderSummary();
-
     }); // beforeEach hook -- renders this before each test
 
     it('displays the cart', () => {
