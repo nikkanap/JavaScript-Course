@@ -6,8 +6,23 @@ import { cart } from "../data/cart-class.js";
 //import "../data/cart-class.js"
 //import '../data/backend-practice.js' ;
 
-// practicing promises
+// practicing asynch await
+async function loadPage() {
+    await loadProductsFetch();
+    const value = await new Promise((resolve) => {
+        cart.loadCart(() => {
+            resolve('this is a string'); // string gets saved to value
+        });
+    });
 
+    renderCheckoutHeader();
+    renderOrderSummary();
+    renderPaymentSummary(); 
+}
+loadPage();
+
+/*
+// practicing promises
 Promise.all([
     loadProductsFetch(), 
     new Promise((resolve) => {
@@ -21,6 +36,7 @@ Promise.all([
     renderOrderSummary();
     renderPaymentSummary();
 });
+*/
 
 // recommended to use promises than callbacks
 /*
