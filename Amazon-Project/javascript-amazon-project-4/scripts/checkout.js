@@ -8,12 +8,20 @@ import { cart } from "../data/cart-class.js";
 
 // practicing asynch await
 async function loadPage() {
-    await loadProductsFetch();
-    const value = await new Promise((resolve) => {
-        cart.loadCart(() => {
-            resolve('this is a string'); // string gets saved to value
+    try{
+        //throw 'error1';
+
+        await loadProductsFetch();
+        const value = await new Promise((resolve, reject) => {
+            //throw 'error2';
+            cart.loadCart(() => {
+                //reject(); //error inside of a promise, asynchronously
+                resolve('this is a string'); // string gets saved to value
+            });
         });
-    });
+    } catch(error) {
+        console.log('Unexpected error. Please try again later.');
+    }
 
     renderCheckoutHeader();
     renderOrderSummary();
