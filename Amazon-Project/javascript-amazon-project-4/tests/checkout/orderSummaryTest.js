@@ -19,9 +19,8 @@ describe('test suite: orderSummaryTest', () => {
     const deliveryOptionId = 3;
 
     beforeAll((done) => {
-        loadProducts(() => {
-            
-        done();
+        loadProducts(() => { 
+            done();
         });
     });
 

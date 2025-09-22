@@ -88,20 +88,32 @@ export class Cart {
     }
 
     updateDeliveryOption(productId, deliveryOptionId) {
-            let matchingItem;
-            this.cartItems.forEach((item) => {
-                if(productId === item.productId){
-                    matchingItem = item;
-                } 
-            });
+        let matchingItem;
+        this.cartItems.forEach((item) => {
+            if(productId === item.productId){
+                matchingItem = item;
+            } 
+        });
 
-            if(!matchingItem){
-                return;
-            }
-
-            matchingItem.deliveryOptionId = deliveryOptionId;
-            this.saveToStorage();
+        if(!matchingItem){
+            return;
         }
+
+        matchingItem.deliveryOptionId = deliveryOptionId;
+        this.saveToStorage();
+    }
+
+    loadCart(fun) {
+        const xhr = new XMLHttpRequest();
+        
+        xhr.addEventListener('load', () => {
+            console.log(xhr.response);
+            fun();
+        });
+        
+        xhr.open('GET', 'https://supersimplebackend.dev/cart');
+        xhr.send();
+    }
 }
 
 export const cart = new Cart('cart-oop');
